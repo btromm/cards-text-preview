@@ -11,9 +11,9 @@ export class CardsWithPreviewView extends BasesView {
 		this.containerEl = parentEl.createDiv({ cls: 'cards-preview-grid' });
 	}
 
-	async onDataUpdated(): Promise<void> {
+	onDataUpdated(): void {
 		this.previewCache.clear();
-		await this.renderCards();
+		void this.renderCards();
 	}
 
 	private async renderCards(): Promise<void> {
@@ -122,7 +122,7 @@ export class CardsWithPreviewView extends BasesView {
 
 		// Click to open
 		card.addEventListener('click', () => {
-			this.app.workspace.getLeaf(false).openFile(entry.file);
+			void this.app.workspace.getLeaf(false).openFile(entry.file);
 		});
 	}
 
@@ -151,7 +151,7 @@ export class CardsWithPreviewView extends BasesView {
 				e.stopPropagation(); // Prevent card click
 				const file = this.app.metadataCache.getFirstLinkpathDest(linkPath, sourcePath);
 				if (file) {
-					this.app.workspace.getLeaf(false).openFile(file);
+					void this.app.workspace.getLeaf(false).openFile(file);
 				}
 			});
 

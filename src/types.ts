@@ -9,7 +9,7 @@ export interface CardData {
 	/** Display title for the card */
 	title: string;
 	/** Frontmatter properties from the note */
-	properties: Record<string, any>;
+	properties: Record<string, unknown>;
 	/** Plain text preview of the note body */
 	preview: string;
 }

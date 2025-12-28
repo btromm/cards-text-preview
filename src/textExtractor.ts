@@ -11,13 +11,13 @@ export function stripMarkdown(text: string): string {
 	result = result.replace(/^#{1,6}\s+/gm, '');
 	result = result.replace(/(\*\*|__)(.*?)\1/g, '$2');
 	result = result.replace(/(\*|_)(.*?)\1/g, '$2');
-	result = result.replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1');
-	result = result.replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, (_, link, text) => text || link);
-	result = result.replace(/!\[[^\]]*\]\([^\)]+\)/g, '');
+	result = result.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
+	result = result.replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, (_: string, link: string, text: string) => text || link);
+	result = result.replace(/!\[[^\]]*\]\([^)]+\)/g, '');
 	result = result.replace(/^>\s+/gm, '');
-	result = result.replace(/^[\*\-\+]\s+/gm, '');
+	result = result.replace(/^[*\-+]\s+/gm, '');
 	result = result.replace(/^\d+\.\s+/gm, '');
-	result = result.replace(/^[\*\-_]{3,}$/gm, '');
+	result = result.replace(/^[*\-_]{3,}$/gm, '');
 	result = result.replace(/<[^>]+>/g, '');
 	return result;
 }
