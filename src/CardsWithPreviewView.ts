@@ -23,6 +23,7 @@ export class CardsWithPreviewView extends BasesView {
 		const cardSize = Number(this.config.get('card-size')) || 200;
 		const fontSize = Number(this.config.get('font-size')) || 13;
 		const showTitleOnImage = this.config.get('show-title-on-image') !== false;
+		const useMasonry = this.config.get('masonry-layout') === true;
 
 		// Use built-in properties from the base's column picker, excluding image property and file name
 		const imagePropertyId = this.config.getAsPropertyId('image-property');
@@ -39,6 +40,7 @@ export class CardsWithPreviewView extends BasesView {
 		// Set card size via CSS variable
 		this.containerEl.style.setProperty('--card-min-width', `${cardSize}px`);
 		this.containerEl.style.setProperty('--preview-font-size', `${fontSize}px`);
+		this.containerEl.toggleClass('masonry-enabled', useMasonry);
 
 		if (this.data.data.length === 0) {
 			this.containerEl.createDiv({ cls: 'cards-preview-empty', text: 'No notes to display' });

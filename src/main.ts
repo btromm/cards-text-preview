@@ -77,6 +77,12 @@ export default class CardsTextPreviewPlugin extends Plugin {
 						'16/9': 'Wide (16:9)',
 						'2/1': 'Banner (2:1)'
 					} as Record<string, string>
+				},
+				{
+					type: 'toggle',
+					key: 'masonry-layout',
+					displayName: 'Masonry Layout (Experimental)',
+					default: false
 				}
 			]
 		});

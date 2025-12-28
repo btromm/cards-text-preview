@@ -101,3 +101,10 @@
 	padding: 40px;
 	color: var(--text-muted);
 }
+
+/* Masonry layout (experimental - only works in Firefox and Safari TP) */
+@supports (grid-template-rows: masonry) {
+	.cards-preview-grid.masonry-enabled {
+		grid-template-rows: masonry;
+	}
+}
