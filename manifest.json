@@ -1,7 +1,7 @@
 {
 	"id": "cards-text-preview",
 	"name": "Cards with Preview",
-	"version": "1.1.0",
+	"version": "1.2.0",
 	"minAppVersion": "1.10.0",
 	"description": "Adds a custom Bases view that displays notes as cards with text body previews.",
 	"author": "myco",
