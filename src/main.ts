@@ -64,6 +64,7 @@ export default class CardsTextPreviewPlugin extends Plugin {
 					displayName: 'Cover Ratio',
 					default: '3/2',
 					options: {
+						'2/3': 'Book (2:3)',
 						'1/1': 'Square (1:1)',
 						'4/3': 'Standard (4:3)',
 						'3/2': 'Photo (3:2)',
