@@ -1,13 +1,126 @@
-# Obsidian Sample Plugin Plus
+# Cards with Preview - Obsidian Plugin
 
-This is a sample plugin for [Obsidian](https://obsidian.md) with AI-assisted development tools and best practices.
+A custom Bases view for [Obsidian](https://obsidian.md) that displays notes as cards with text previews. Easily browse and find content in your vault with a visual card-based layout showing note titles, optional images, and configurable plain text excerpts from note bodies.
 
-This project uses TypeScript to provide type checking and documentation. The repo depends on the latest plugin API (obsidian.d.ts) in TypeScript Definition format, which contains TSDoc comments describing what it does.
+## Features
 
-This sample plugin demonstrates some of the basic functionality the plugin API can do:
-- Adds a ribbon icon, which shows a Notice when clicked.
-- Adds a command "Open modal (simple)" which opens a Modal.
-- Adds a plugin setting tab to the settings page.
+- 📇 **Card Grid Layout**: View your notes as cards in a responsive grid
+- 📄 **Text Previews**: Display plain text excerpts from note bodies (50-1000 characters, configurable per-view)
+- 🖼️ **Image Support**: Show images from note properties when an Image Property is configured
+- ⚙️ **Per-View Configuration**: Each Bases view can have different preview settings
+- 🎨 **Theme Compatible**: Automatically adapts to light and dark themes
+- 📱 **Responsive**: Works on desktop and mobile devices
+
+## Requirements
+
+- Obsidian 1.10.0 or higher (required for Bases API)
+
+## Installation
+
+### Manual Installation
+
+1. Download the latest release files from GitHub
+2. Copy `main.js`, `manifest.json`, and `styles.css` to your vault's plugins folder:
+   ```
+   VaultFolder/.obsidian/plugins/cards-text-preview/
+   ```
+3. Reload Obsidian
+4. Enable the plugin in Settings → Community plugins
+
+## Usage
+
+1. **Create or open a Base**: Go to a `.base` file in your vault (requires Bases core plugin)
+2. **Switch to Cards with Preview view**: Click the view selector and choose "Cards with Preview"
+3. **Configure options**: Use the view options toolbar to adjust:
+   - **Image Property**: Select a property that contains image paths to display images on cards
+   - **Preview Character Limit**: Set how many characters to show in text previews (50-1000)
+4. **Click cards**: Click any card to open the note
+
+## Configuration
+
+### View Options
+
+The plugin adds two configurable options to each Bases view:
+
+#### Image Property
+- **Type**: Property selector
+- **Purpose**: Choose a note property that contains image file paths
+- **Behavior**:
+  - If configured and the note has a value for this property, the image will be displayed at the top of the card
+  - If no image is available, the text preview will be shown instead
+  - Both image and text preview can be displayed simultaneously
+
+#### Preview Character Limit
+- **Type**: Slider (50-1000 characters)
+- **Default**: 200 characters
+- **Purpose**: Control how much text to display from each note body
+- **Behavior**: Text is truncated with "..." if it exceeds the limit
+
+### What Gets Previewed
+
+The text preview shows plain text from your note body:
+- ✅ Markdown formatting is stripped (headers, bold, italic, links, etc.)
+- ✅ Frontmatter is excluded
+- ✅ Code blocks and inline code are removed
+- ✅ Whitespace is normalized
+- ✅ Empty notes show "[No content]"
+- ✅ Read errors show "[Unable to load preview]"
+
+## Development
+
+### Building from Source
+
+```bash
+# Install dependencies
+pnpm install
+
+# Build for development (watch mode)
+pnpm dev
+
+# Build for production
+pnpm build
+
+# Lint code
+pnpm lint
+```
+
+### Project Structure
+
+```
+src/
+├── main.ts                    # Plugin entry point and view registration
+├── CardsWithPreviewView.ts    # Bases view implementation
+├── textExtractor.ts           # Text extraction and markdown stripping
+└── types.ts                   # TypeScript interfaces
+
+styles.css                     # Card styling
+manifest.json                  # Plugin metadata
+```
+
+## Troubleshooting
+
+### Cards not showing
+- Ensure you're using Obsidian 1.10.0 or higher
+- Verify the Bases core plugin is enabled
+- Check that you're viewing a `.base` file
+
+### Images not displaying
+- Confirm an "Image Property" is selected in view options
+- Verify the property contains valid file paths to images in your vault
+- Check that image files exist at the specified paths
+
+### Text preview looks wrong
+- Adjust the "Preview Character Limit" in view options
+- Some complex markdown may not strip perfectly - this is expected
+- Contact support if specific patterns cause issues
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the 0BSD License.
 
 ## What Makes This Plus Version Different?
 

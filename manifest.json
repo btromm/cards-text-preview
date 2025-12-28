@@ -1,11 +1,11 @@
 {
-	"id": "sample-plugin",
-	"name": "Sample Plugin",
+	"id": "cards-text-preview",
+	"name": "Cards with Preview",
 	"version": "1.0.0",
-	"minAppVersion": "0.15.0",
-	"description": "Demonstrates some of the capabilities of the Obsidian API.",
-	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
-	"fundingUrl": "https://obsidian.md/pricing",
+	"minAppVersion": "1.10.0",
+	"description": "Adds a custom Bases view that displays notes as cards with text body previews.",
+	"author": "myco",
+	"authorUrl": "",
+	"fundingUrl": "",
 	"isDesktopOnly": false
 }

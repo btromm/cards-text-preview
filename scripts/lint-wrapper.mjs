@@ -32,7 +32,6 @@ const eslint = spawn(command, commandArgs, {
 });
 
 eslint.on('close', (code) => {
-	// Only show success message if exit code is exactly 0 (no errors or warnings)
 	if (code === 0) {
 		const message = hasFix 
 			? '\n✓ Linting complete! All issues fixed automatically.\n'
@@ -40,13 +39,7 @@ eslint.on('close', (code) => {
 		console.log(message);
 		process.exit(0);
 	} else {
-		// ESLint already printed errors/warnings, exit with the code
-		// Don't show any success message
-		process.exit(code || 1);
+		// ESLint already printed errors, just exit with the code
+		process.exit(code);
 	}
-});
-
-eslint.on('error', (error) => {
-	console.error('Error running ESLint:', error);
-	process.exit(1);
 });

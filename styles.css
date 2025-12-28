@@ -1,8 +1,74 @@
-/*
+/* Cards with Preview Plugin */
 
-This CSS file will be included with your plugin, and
-available in the app when your plugin is enabled.
+.cards-preview-grid {
+	display: grid;
+	gap: 16px;
+	padding: 16px;
+}
 
-If your plugin does not need CSS, delete this file.
+/* Card sizes */
+.cards-preview-grid.size-small {
+	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
 
-*/
+.cards-preview-grid.size-medium {
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+.cards-preview-grid.size-large {
+	grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+.cards-preview-card {
+	background: var(--background-primary);
+	border-radius: var(--radius-m);
+	box-shadow: 0 0 0 1px var(--background-modifier-border);
+	overflow: hidden;
+	cursor: pointer;
+	transition: box-shadow 0.15s ease-in-out;
+	display: flex;
+	flex-direction: column;
+}
+
+.cards-preview-card:hover {
+	box-shadow: 0 0 0 1px var(--background-modifier-border-hover);
+}
+
+.cards-preview-cover {
+	width: 100%;
+	background-color: var(--background-secondary);
+	background-position: center;
+	background-repeat: no-repeat;
+	flex-shrink: 0;
+}
+
+.cards-preview-title {
+	padding: 12px;
+	font-weight: 600;
+	font-size: var(--font-ui-medium);
+	color: var(--text-normal);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	flex-shrink: 0;
+}
+
+.cards-preview-text {
+	padding: 0 12px 12px;
+	color: var(--text-muted);
+	font-size: var(--font-ui-small);
+	line-height: 1.4;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	word-break: break-word;
+	flex: 1;
+}
+
+.cards-preview-empty {
+	grid-column: 1 / -1;
+	text-align: center;
+	padding: 40px;
+	color: var(--text-muted);
+}
