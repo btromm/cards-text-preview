@@ -22,6 +22,7 @@ export class CardsWithPreviewView extends BasesView {
 		const coverRatio = (this.config.get('cover-ratio') as string) || '3/2';
 		const cardSize = Number(this.config.get('card-size')) || 200;
 		const fontSize = Number(this.config.get('font-size')) || 13;
+		const showTitleOnImage = this.config.get('show-title-on-image') !== false;
 
 		// Use built-in properties from the base's column picker, excluding image property and file name
 		const imagePropertyId = this.config.getAsPropertyId('image-property');
@@ -45,11 +46,11 @@ export class CardsWithPreviewView extends BasesView {
 		}
 
 		for (const entry of this.data.data) {
-			await this.createCard(entry, previewLines, coverFit, coverRatio, propertyIds, imagePropertyId);
+			await this.createCard(entry, previewLines, coverFit, coverRatio, propertyIds, imagePropertyId, showTitleOnImage);
 		}
 	}
 
-	private async createCard(entry: BasesEntry, previewLines: number, coverFit: string, coverRatio: string, propertyIds: BasesPropertyId[], imagePropertyId: BasesPropertyId | null): Promise<void> {
+	private async createCard(entry: BasesEntry, previewLines: number, coverFit: string, coverRatio: string, propertyIds: BasesPropertyId[], imagePropertyId: BasesPropertyId | null, showTitleOnImage: boolean): Promise<void> {
 		const card = this.containerEl.createDiv({ cls: 'cards-preview-card' });
 
 		let hasImage = false;
@@ -90,8 +91,10 @@ export class CardsWithPreviewView extends BasesView {
 			}
 		}
 
-		// Title
-		card.createDiv({ cls: 'cards-preview-title', text: entry.file.basename });
+		// Title (show if no image, or if showTitleOnImage is enabled)
+		if (!hasImage || showTitleOnImage) {
+			card.createDiv({ cls: 'cards-preview-title', text: entry.file.basename });
+		}
 
 		// Text preview (only if no image)
 		if (!hasImage) {

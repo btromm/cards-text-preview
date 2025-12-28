@@ -22,6 +22,12 @@ export default class CardsTextPreviewPlugin extends Plugin {
 					placeholder: 'Choose a property for card images...'
 				},
 				{
+					type: 'toggle',
+					key: 'show-title-on-image',
+					displayName: 'Show Title on Image Cards',
+					default: true
+				},
+				{
 					type: 'slider',
 					key: 'card-size',
 					displayName: 'Card Size',
