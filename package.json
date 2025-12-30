@@ -1,7 +1,7 @@
 {
-	"name": "obsidian-sample-plugin",
+	"name": "cards-text-preview",
 	"version": "1.0.0",
-	"description": "This is a sample plugin for Obsidian (https://obsidian.md)",
+	"description": "Adds a custom Bases view that displays notes as cards with text body previews.",
 	"main": "main.js",
 	"type": "module",
 	"scripts": {
