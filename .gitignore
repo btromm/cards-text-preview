@@ -23,3 +23,7 @@ data.json
 
 # Reference materials
 .ref/
+
+# AI assistant directories
+.agents/
+.claude/
